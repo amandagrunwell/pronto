@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum accountType {
+  zoho
+  google
+  smtp
+  microsoft
+}
+
+enum Gender {
+  female
+  male
+}
+
+model bec {
+  id        String    @id @default(uuid())
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+  ceo_name  String
+  ceo_email String?
+  cfo_email String    @unique
+  location  String    @default("")
+  isSent    Boolean   @default(false)
+  isOpen    Boolean   @default(false)
+}
+
+model emailAccounts {
+  id                 String      @id @default(uuid())
+  createdAt          DateTime?   @default(now())
+  service            accountType
+  ZohoClientId       String?
+  zohoClientSecret   String?
+  ZohoAuthCode       String?
+  ZohoRefreshToken   String?
+  zoho_account_id    String?
+  sender_email       String?
+  sender_password    String?
+  expires            DateTime
+  isGood             Boolean     @default(true)
+  domain             String?
+  domainServiceEmail String
+  host               String?
+  port               Int?
+}
+
+model clAccounts {
+  id            String    @id @default(uuid())
+  createdAt     DateTime? @default(now())
+  name          String
+  email         String
+  bankName      String
+  routineNumber String
+  accountNumber String
+  accountType   String
+  isActive      Boolean
+  accountLevel  String
+  gender        Gender    @default(female)
+  amount        String?   
+}

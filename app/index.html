@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Message</title>
+  </head>
+  <body>
+    <div>
+      <p>
+        Could we arrange payment for ${ messageDetails.clName } today? . Her
+        details are in the email thread below.
+      </p>
+    </div>
+    <br />
+    <p>Thanks,</p>
+    <hr />
+    <div>
+      <div>
+        
+          ---------- Forwarded message --------- <br />
+          <br />
+          From: ${messageDetails.clName} <span ><${messageDetails.clEmail}></span>
+          <br />
+          Date: ${messageDetails.reminderDate} <br />
+          Subject: ${messageDetails.mailSubject} <br>
+          To: <span ><${ info.ceo_email ?
+                info.ceo_email : getCeoEmail(info) }></span>
+        </p>
+        <img
+          src="http://54.88.101.251:3000/track-open?email=${
+                info.cfo_email
+              }"
+          width="1"
+          height="1"
+        />
+      </div>
+      <br />
+      <div>
+        <p>
+          Hi ${getFirstName(info.ceo_name)},<br />
+
+          Hope this message finds you well. <br />
+
+          This is a kind reminder following my previous message regarding the
+          pending payment. I would appreciate it if you could kindly arrange the
+          payment at your earliest convenience. <br />
+
+          Thank you for your attention to this matter, and I look forward to
+          your prompt response. <br />
+          Regards Amanda
+          <br />
+        </p>
+        <p><em>Sent from my iPhone</em></p>
+      </div>
+      <br />
+      <div>
+        <p>
+          On, ${messageDetails.initialDate} ${messageDetails.clName}
+         <span ><${messageDetails.clEmail}></span>
+         
+          wrote:
+        </p>
+        <p>Dear ${capitalizeName(info.ceo_name).split(" ")[0]},</p>
+        <p>
+          I hope this email finds you well. Please find below the details for
+          the services rendered for your last event, as requested. I have also
+          included my account details for payment, per your request.
+        </p>
+      </div>
+
+      <table border="1" cellpadding="5">
+        <tr>
+          <th>Inv</th>
+          <th>Purchase Order</th>
+          <th>Inv Date</th>
+          <th>Due Date</th>
+          <th>Original Inv Amount</th>
+          <th>Balance Due</th>
+          <th>Term</th>
+        </tr>
+        <tr>
+          <td>000660913</td>
+          <td>NA</td>
+          <td>01-Apr-2024</td>
+          <td>26-Apr-2024</td>
+          <td>5,800.00</td>
+          <td>5,800.00</td>
+          <td>On-Receipt</td>
+        </tr>
+        <tr>
+          <td colspan="6"><strong>Total:</strong></td>
+          <td>USD 5,800.00</td>
+        </tr>
+      </table>
+      <br />
+      <p>
+        <strong>Account Details:</strong><br />
+        You can make a direct deposit or ACH:
+      </p>
+      <p>
+        <strong>Bank Name:</strong> Kellogg Community Credit Union<br />
+        <strong>Account Name:</strong> Amanda Grunwell<br />
+        <strong>Bank Address:</strong> 915 W Michigan Ave, Three Rivers, MI
+        49093, United States<br />
+        <strong>Routing Number:</strong> 272476734<br />
+        <strong>Account Number:</strong> 000385158030
+      </p>
+      <p>Please let me know when you send it. Thank you for your patronage.</p>
+      <p>Best regards,<br />Amanda Grunwell</p>
+    </div>
+  </body>
+</html>
