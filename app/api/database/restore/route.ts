@@ -6,7 +6,7 @@ import { exec } from "child_process";
 
 const databaseUrl = envStore.DATABASE_URL as string;
 const execPromise = util.promisify(exec);
-export const restoreDatabase = async (req: Request, res: Response) => {
+export  async function POST(request: Request) {
   try {
     const dumpFilePath = "bec.sql";
     if (!dumpFilePath) {
