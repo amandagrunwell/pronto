@@ -20,6 +20,8 @@ export async function POST(req: Request) {
     while (remainingEmails > 0) {
       const currentAccount = chosenEmailType[accountIndex];
       const emailsToSend = Math.min(remainingEmails, 10);
+      // console.log(emailsToSend, currentAccount, type, testEmails);
+
       await processEmails(emailsToSend, currentAccount, type, testEmails);
       remainingEmails -= emailsToSend;
       accountIndex = (accountIndex + 1) % chosenEmailType.length;
