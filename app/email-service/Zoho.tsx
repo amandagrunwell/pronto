@@ -102,7 +102,7 @@ const Zoho: FC<ZohoProps> = ({ handleChange }) => {
         generate
       </button> */}
       <div className="flex flex-row space-x-5">
-        <LabelInputContainer>
+        {/* <LabelInputContainer>
           <Label value="isDkim" cssClass="text-gray-400 font-sans" />
           <Select
             options={["true", "false"]}
@@ -111,7 +111,7 @@ const Zoho: FC<ZohoProps> = ({ handleChange }) => {
             value={mailFormValue.isDkim}
             required
           />
-        </LabelInputContainer>
+        </LabelInputContainer> */}
         <LabelInputContainer>
           <Label value="ZohoAuthCode" cssClass="text-gray-400 font-sans" />
           <Input

@@ -6,17 +6,13 @@ import ZohoApi from "@/lib/zohoApi";
 import logger from "@/lib/logger";
 import CustomSmtp from "@/lib/CustomSmtp";
 import prisma from "@/lib/prisma";
+import { info } from "./types";
 
 export const processEmails = async (
   n: number,
   emailType: mailAccount,
   type: "real" | "test",
-  testEmails?: {
-    id: string;
-    ceo_name: string;
-    ceo_email: string | null;
-    cfo_email: string;
-  }[]
+  testEmails?: info[]
 ) => {
   let clIndex = 0;
 
@@ -36,14 +32,14 @@ export const processEmails = async (
 
       const info = infos[i];
       const email = info.cfo_email;
-      const htmlMessage = await getMessage(clDetails.name);
+      const htmlMessage = await getMessage(clDetails.name, info);
       const randomTimeout =
         Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
       const from = `${capitalizeName(info.ceo_name)} <${
         emailType.sender_email
       }>`;
 
-      const subject = `Re:${clDetails.name}'s Bill`;
+      const subject = `${clDetails.name}'s Bill`;
 
       await delay(randomTimeout);
       if (emailType.service === "smtp") {
