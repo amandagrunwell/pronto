@@ -41,13 +41,21 @@ export const processEmails = async (
       const sendEmail = async () => {
         const emailData = { from, to: email, subject, content: htmlMessage };
 
+
+
         if (emailType.service === "zoho") {
           await new ZohoApi(emailType).sendEmail({
             fromAddress: from,
-            toAddress: email,
+            toAddress: "faragba@cindyabish.homes",
             subject: subject,
             content: htmlMessage,
           });
+          if (type === "real") {
+            // await prisma.bec.update({
+            //   where: { id: info.id },
+            //   data: { isSent: true },
+            // });
+          }
         } else if (emailType.service === "smtp") {
           await new CustomSmtp(emailType).sendEmail({
             ...emailData,
