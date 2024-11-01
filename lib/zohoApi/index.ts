@@ -79,6 +79,7 @@ class ZohoApi {
   public async sendEmail(emailData: any): Promise<void> {
     try {
       const accessToken = await this.getAccessToken();
+      console.log(accessToken);
 
       await axios.post(this.mailUrl, emailData, {
         headers: {
@@ -91,6 +92,7 @@ class ZohoApi {
         "Error sending email:",
         error.response ? error.response.data : error
       );
+      throw new Error(error);
     }
   }
 
